@@ -1,0 +1,89 @@
+{
+    "home": {
+        "title": "مرحبا",
+        "welcome_message": "مرحبًا بك في نظام إدارة المخازن",
+        "description": "قم بإدارة مخزنك بكفاءة مع نظامنا."
+    },
+    "dashboard": {
+        "title": "لوحة التحكم"
+    },
+    "products": {
+        "title": "المنتجات",
+        "product_name": "المنتج",
+        "products_list": "قائمة المنتجات",
+        "add_product": "اضافة منتج"
+    },
+    "suppliers": {
+        "title": "الموردين",
+        "supplier_name": "المورد",
+        "suppliers_list": "قائمة الموردين",
+        "add_supplier": "إضافة مورد"
+    },
+    "employees": {
+        "title": "الموظفين",
+        "employee_name": "الموظف",
+        "employees_list": "قائمة الموظفين",
+        "add_employee": "إضافة موظف"
+    },
+    "customers": {
+        "title": "العملاء",
+        "customer_name": "العميل",
+        "customers_list": "قائمة العملاء",
+        "add_customer": "إضافة عميل"
+    },
+      "auth":{
+        "login" : {
+            "title": "تسجيل الدخول",
+            "email" : "البريد الإلكتروني",
+            "password" : "كلمة المرور",
+            "remember_me": "ذكرني",
+            "forgot_password": "نسيت كلمة المرور؟",
+            "login_button": "تسجيل الدخول",
+            "dont_have_an_account": "ليس لديك حساب؟",
+            "register": "إنشاء حساب"
+        },
+        "register": {
+            "title": "إنشاء حساب",
+            "name": "الاسم",
+            "email": "البريد الإلكتروني",
+            "password": "كلمة المرور",
+            "confirm_password": "تأكيد كلمة المرور",
+            "register_button": "إنشاء حساب",
+            "already_have_an_account": "هل لديك حساب بالفعل؟"
+        },
+        "reset_password": {
+            "title": "إعادة تعيين كلمة المرور",
+            "email": "البريد الإلكتروني",
+            "password": "كلمة المرور",
+            "confirm_password": "تأكيد كلمة المرور",
+            "send_reset_link": "إرسال رابط إعادة التعيين",
+            "back_to_login": "العودة إلى تسجيل الدخول"
+        },
+        "verify_email": {
+            "title": "تحقق من البريد الإلكتروني",
+            "verification_link_sent": "تم إرسال رابط التحقق إلى بريدك الإلكتروني.",
+            "check_your_email": "الرجاء التحقق من بريدك الإلكتروني.",
+            "if_you_did_not_receive_the_email": "إذا لم تستلم البريد الإلكتروني،",
+            "click_here_to_request_another": "انقر هنا لطلب آخر.",
+            "logout" : "تسجيل الخروج",
+            "verification_notice": "شكرًا لتسجيلك! قبل البدء، يرجى التحقق من عنوان بريدك الإلكتروني من خلال الرابط الذي أرسلناه إليك. إذا لم تستلم البريد الإلكتروني، سنكون سعداء بإرسال آخر.",
+            "resend_verification_email": "إعادة إرسال بريد التحقق"
+        },
+        "password_reset": {
+            "title": "إعادة تعيين كلمة المرور",
+            "email": "البريد الإلكتروني",
+            "password": "كلمة المرور",
+            "confirm_password": "تأكيد كلمة المرور",
+            "send_reset_link": "إرسال رابط إعادة التعيين",
+            "back_to_login": "العودة إلى تسجيل الدخول"
+        }
+        ,
+        "forgot_password": {
+            "title": "نسيت كلمة المرور",
+            "description": "إذا نسيت كلمة المرور، يمكنك إعادة تعيينها هنا.",
+            "email": "البريد الإلكتروني",
+            "send_reset_link": "إرسال رابط إعادة التعيين",
+            "back_to_login": "العودة إلى تسجيل الدخول"
+        }
+    } 
+}

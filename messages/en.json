@@ -1,0 +1,79 @@
+{
+    "home" :{
+        "title": "Hello",
+        "welcome_message": "Welcome to the Warehouse Management System",
+        "description": "Manage your warehouse efficiently with our system."
+    },
+    "dashboard": {
+        "title": "dashboard"
+    },
+    "products": {
+        "title": "products",
+        "product_name": "product",
+        "products_list": "Product List",
+        "add_product": "add product"
+    },
+    "customers": {
+        "title": "customers",
+        "customer_name": "customer",
+        "customers_list": "Customer List",
+        "add_customer": "add customer"
+    },
+    "suppliers": {
+        "title": "suppliers",
+        "supplier_name": "supplier",
+        "suppliers_list": "Suppliers List",
+        "add_supplier": "add supplier"
+    },
+    "employees": {
+        "title": "employees",
+        "employee_name": "Employee",
+        "employees_list": "Employees List",
+        "add_employee": "add employee"
+    },
+    "auth":{
+        "login" : {
+            "title": "Login",
+            "email" : "email",
+            "password" : "password",
+            "remember_me": "Remember me",
+            "forgot_password": "Forgot your password?",
+            "login_button": "Login",
+            "dont_have_an_account": "Don't have an account?",
+            "register": "Register"
+        },
+        "register": {
+            "title": "Create Account",
+            "name": "name",
+            "email": "email",
+            "password": "password",
+            "confirm_password": "confirm password",
+            "register_button": "Create Account",
+            "already_have_an_account": "Already have an account?"
+        },
+        "reset_password": {
+            "title": "Reset Password",
+            "email": "email",
+            "password": "password",
+            "confirm_password": "confirm password",
+            "send_reset_link": "Send Reset Link",
+            "back_to_login": "Back to Login"
+        },
+        "verify_email": {
+            "title": "Verify Email",
+            "verification_link_sent": "A fresh verification link has been sent to your email address.",
+            "check_your_email": "Before proceeding, please check your email for a verification link.",
+            "if_not_received": "If you did not receive the email",
+            "request_another": "click here to request another",
+            "logout" : "Logout",
+            "verification_notice": "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.",
+            "resend_verification_email": "Resend Verification Email"
+        },
+        "forgot_password": {
+            "title": "Forgot Password",
+            "description": "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.",
+            "email": "email",
+            "send_reset_link": "Send Reset Link"
+        }
+    } 
+}

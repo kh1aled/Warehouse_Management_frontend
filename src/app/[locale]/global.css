@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #171717;
+  --gray-color : rgb(239 240 242);
+  --icon-color : rgba(0 , 0 ,0 ,1);
+  --main-color : #2C6AE5;
+  --green-color : rgb(50 201 141);
+  --bink-color : #611BCB;
+  --orange-color : #FF9720;
+  --border-color : rgb(239 240 242);
+}
+
+.dark {
+  --color-bg: #171717;
+  --color-text: #eee;
+}
+
+.light {
+  --color-bg: #ffffff;
+  --color-text: #171717;
+}
+
+
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.border-border {
+    --tw-border-opacity: 1;
+    border-color: rgb(239 240 242 / var(--tw-border-opacity, 1));
+}
+
+
+
+@layer utilities {
+
+  /*Constats*/
+  .flex-center{
+    @apply flex justify-center items-center
+  }
+  .flex-between{
+    @apply flex justify-between items-center
+  }
+  .flex-end{
+    @apply flex justify-end items-center
+  }
+
+
+
+  /*Navbar*/
+  .navbar{
+    @apply w-full flex justify-between items-center p-4 bg-[var(--color-bg)] text-[var(--color-text)] border-2 border-solid 
+  }
+  .toggler_btn{
+    @apply w-10 h-10 flex justify-center items-center bg-[var(--gray-color)] cursor-pointer
+  }
+  .navbar_list{
+    @apply gap-4 
+  }
+  .add_link{
+    @apply w-10 h-10 flex justify-center items-center cursor-pointer border-2 border-solid p-2 rounded-[5px]
+  }
+  .sidebar_item{
+    @apply w-full ;
+  }
+  .sidebar_link{
+    @apply px-2 py-4 rounded-sm  flex items-center gap-4 text-sm  transition-all duration-300 text-black
+  }
+
+   .sidebar_link:hover {
+    background-color: rgba(var(--main-color), 0.15);
+    color: var(--main-color);
+  }
+
+  .breadcrumb-span{
+    @apply text-[14px] font-normal inline-block me-2
+  }
+
+  /**table*/
+  .row{
+    @apply h-[3px]
+  }
+
+  /*Components*/
+
+  .main_btn{
+    @apply flex justify-center items-center rounded-lg px-9 py-3 gap-2 font-extralight cursor-pointer
+  }
+  .rounded_btn{
+    @apply bg-blue-600 text-white px-4 py-2 rounded cursor-pointer transition-all duration-300 hover:bg-[var(--green-color)]
+  }
+  .search-input{
+    @apply w-[40%] py-2 px-4 border border-solid border-white/15 text-[var(--color-text)] focus:outline-none 
+  }
+
+  .form-container{
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4
+  }
+  .form-container-category{
+        @apply grid grid-cols-1 gap-4 p-4
+  }
+
+  .form-field{
+    @apply flex flex-col gap-2
+  }
+
+  .form_name{
+    @apply w-70
+  }
+
+  .form-input{
+    @apply border border-solid px-2 py-3 outline-0 border-[var(--border-color)] text-[var(--text-body)]
+  }
+  .imageContent_input{
+    @apply hidden  
+  }
+  .product-image-upload-inner{
+    @apply absolute top-[60px] left-0 z-0 w-full cursor-pointer text-center ps-1 border border-dashed border-[var(--main-color)] rounded-lg p-4 bg-blue-100
+  }
+
+  .custom-section{
+    @apply w-full px-2 py-5
+  }
+  .main_section{
+    @apply mt-4 w-full px-7 py-9 bg-white mb-5 shadow-2xl rounded-lg space-y-5 flex items-center gap-2  flex-wrap justify-between
+  }
+
+}
+
+
+/* border */
+
+
+
+/*Text*/
+
+.text-heading{
+  color: rgb(13 15 25 );
+}
+
+.text-body{
+  color: rgb(97 97 97);
+}
+
+
+/* Table*/ 
+.custome_table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.custome_table th,
+.custome_table td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border: 1px solid #eee;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text, #333);
+}
+
+.custome_table th {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #616161;
+  font-weight: 900;
+  text-transform: capitalize;
+}
+
+.custome_table tr:hover {
+  background-color: #f9f9f9;
+}
