@@ -4,8 +4,8 @@
 
 
 :root {
-  --color-bg: #ffffff;
-  --color-text: #171717;
+  --background: #ffffff;
+  --foreground: #212121;
   --gray-color : rgb(239 240 242);
   --icon-color : rgba(0 , 0 ,0 ,1);
   --main-color : #2C6AE5;
@@ -15,22 +15,25 @@
   --border-color : rgb(239 240 242);
 }
 
+
+
+[data-theme='dark'] {
+  --background: #212121;
+  --foreground: #ffffff;
+  --border-color:rgb(33 33 33);
+}
+
 .dark {
-  --color-bg: #171717;
-  --color-text: #eee;
+  --background: #212121;
+  --foreground: #ffffff;
 }
-
-.light {
-  --color-bg: #ffffff;
-  --color-text: #171717;
-}
-
 
 
 body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-arabic), var(--font-latin), sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 
@@ -67,13 +70,13 @@ body {
     @apply gap-4 
   }
   .add_link{
-    @apply w-10 h-10 flex justify-center items-center cursor-pointer border-2 border-solid p-2 rounded-[5px]
+    @apply w-10 h-10 flex justify-center items-center cursor-pointer border-2 border-solid  p-2 rounded-[5px]
   }
   .sidebar_item{
     @apply w-full ;
   }
   .sidebar_link{
-    @apply px-2 py-4 rounded-sm  flex items-center gap-4 text-sm  transition-all duration-300 text-black
+    @apply px-2 py-4 pb-[0.5rem] rounded-sm  flex items-center gap-4 text-sm  transition-all duration-300
   }
 
    .sidebar_link:hover {
@@ -99,7 +102,7 @@ body {
     @apply bg-blue-600 text-white px-4 py-2 rounded cursor-pointer transition-all duration-300 hover:bg-[var(--green-color)]
   }
   .search-input{
-    @apply w-[40%] py-2 px-4 border border-solid border-white/15 text-[var(--color-text)] focus:outline-none 
+    @apply w-[40%] py-2 px-4 dark:bg-black-color border border-solid border-white/15 dark:border-black-color text-[var(--color-text)] focus:outline-none ring-0 rounded-sm outline-none
   }
 
   .form-container{
@@ -118,20 +121,43 @@ body {
   }
 
   .form-input{
-    @apply border border-solid px-2 py-3 outline-0 border-[var(--border-color)] text-[var(--text-body)]
+    @apply border border-solid outline-0 border-[var(--border-color)] dark:border-dark-border-color text-[var(--text-body)]  bg-[var(--background)] w-full border-[#505050]  focus:outline-none px-4 py-3 placeholder-gray-400
+  }
+  .form-select{
+    @apply bg-[var(--background)] w-full border border-[#505050] focus:border-[var(--green-color)] focus:outline-none px-4 py-3
+  }
+  .form-label{
+    @apply block text-sm font-medium mb-2
+  }
+  .form-submit{
+    @apply  text-white font-medium px-9 py-3 rounded-md shadow-xl bg-[var(--main-color)] hover:scale-[1.03] active:scale-100 transition-all duration-200 hover:bg-[var(--green-color)] ring-1 ring-black/5 hover:shadow-xl
   }
   .imageContent_input{
     @apply hidden  
   }
   .product-image-upload-inner{
-    @apply absolute top-[60px] left-0 z-0 w-full cursor-pointer text-center ps-1 border border-dashed border-[var(--main-color)] rounded-lg p-4 bg-blue-100
+    @apply border-2 border-dashed border-[#505050] flex flex-col items-center justify-center text-gray-300 rounded-lg p-4 hover:border-[var(--green-color)] cursor-pointer transition
   }
-
+  .product-image-preview{
+    @apply max-h-[200px] max-w-[200px] object-contain rounded-md
+  }
   .custom-section{
     @apply w-full px-2 py-5
   }
   .main_section{
-    @apply mt-4 w-full px-7 py-9 bg-white mb-5 shadow-2xl rounded-lg space-y-5 flex items-center gap-2  flex-wrap justify-between
+    @apply mt-4 w-full px-7 py-9 bg-white dark:bg-dark-gray-color mb-5 shadow-2xl rounded-lg space-y-5 flex items-center gap-2  flex-wrap justify-between
+  }
+  .basic_section{
+    @apply mt-4 w-full px-7 py-9 bg-white dark:bg-dark-gray-color mb-5 shadow-2xl rounded-lg
+  }
+  .dropdown_container{
+    @apply md:flex justify-center items-center gap-2
+  }
+  .table_container{
+    @apply w-full mt-4 overflow-x-auto col-span-12 lg:col-span-9
+  }
+  .dropdown_btn{
+    @apply flex items-center justify-center text-sm font-medium text-gray-500 dark:text-white hover:text-gray-700
   }
 
 }
@@ -144,31 +170,37 @@ body {
 /*Text*/
 
 .text-heading{
-  color: rgb(13 15 25 );
+  color: var(--foreground);
 }
 
 .text-body{
   color: rgb(97 97 97);
 }
+.dark .text-body{
+  color: rgb(204 204 204);
+}
 
 
-/* Table*/ 
+/* Table Base */
 .custome_table {
   width: 100%;
   border-collapse: collapse;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Table Cells */
 .custome_table th,
 .custome_table td {
   padding: 0.75rem 1rem;
   text-align: center;
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-text, #333);
+  color: var(--black-color);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Table Headers */
 .custome_table th {
   background-color: rgba(255, 255, 255, 0.85);
   color: #616161;
@@ -176,6 +208,34 @@ body {
   text-transform: capitalize;
 }
 
+/* Hover Effect */
 .custome_table tr:hover {
   background-color: #f9f9f9;
+}
+
+/* Dark Mode Styles */
+.dark .custome_table th {
+  background-color: #2e2e2e; /* قريب من خلفية ChatGPT */
+  color: #ccc;
+  border-color: rgb(121, 121, 121);
+}
+
+.dark .custome_table td {
+  color: #e0e0e0;
+  border-color: #444;
+}
+
+.dark .custome_table tr:hover {
+  background-color: #3a3a3a;
+}
+
+
+html[dir="rtl"] .breadcrumb-area-inner-wrap {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+html[dir="rtl"] .breadcrumb-area-inner-wrap .breadcrumb-span {
+  margin-right: 0;
+  margin-left: 0.5rem;
 }

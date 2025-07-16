@@ -15,7 +15,7 @@ const AppLayout = ({ children, params }) => {
     }
 
     return (
-        <section className="min-h-screen bg-gray-100">
+        <section className="min-h-screen">
             <Navigation user={user} lang={locale} dir={direction} />
 
             <main>{children}</main>

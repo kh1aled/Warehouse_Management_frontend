@@ -1,27 +1,81 @@
-import React from 'react'
+'use client';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
 
 const Breadcrumb = ({ title, listItems }) => {
-    return (
-        <div className="breadcrumb-area w-full px-7 py-9 bg-white mb-5 shadow-2xl rounded-lg">
-            <div className="px-2">
+  const path = usePathname();
+  const locale = path.split("/")[1] || "en"; // Default to 'en' if no locale is found
 
-                <h5 className="text-[20px] text-heading font-bold mb-3">{title}</h5>
-                <div className="breadcrumb-area-inner-wrap">
-                    {
-                        listItems && listItems.length > 0 ? (
-                            listItems.map((item, index) => (
-                                <span key={index} className="breadcrumb-span text-body capitalize">
-                                    {item}
-                                    {index < listItems.length - 1 && <span className="mx-1">&gt;</span>}
-                                </span>
-                            ))
-                        ) : null
-                    }
-                    </div>
-            </div>
+  return (
+    <div className="breadcrumb-area w-full px-7 py-9 bg-white dark:bg-dark-gray-color mb-5 shadow-2xl rounded-lg">
+      <div className="px-2">
+        <h5 className="text-[20px] text-heading font-bold mb-3">{title}</h5>
+        <nav className="flex" aria-label="Breadcrumb">
+          <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+            {/* Main nav */}
+            <li className="inline-flex items-center">
+              <Link
+                href={`/${locale}/dashboard`}
+                className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+              >
+                <svg
+                  className="w-3 h-3 me-2.5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                </svg>
+                {locale === "en" ? "Dashboard" : "لوحة التحكم"}
+              </Link>
+            </li>
 
-        </div>
-    )
-}
+            {/* List items */}
+            {listItems && listItems.length > 0 ? (
+              listItems.map((item, index) => (
+                <li key={index}>
+                  <div className="flex items-center">
+                    
+                    <svg
+                      className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 6 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="m1 9 4-4-4-4"
+                      />
+                    </svg>
+                    <span
+                      className="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400"
+                      aria-current={
+                        index === listItems.length - 1 ? "page" : undefined
+                      }
+                    >
+                      {item}
+                    </span>
+                  </div>
+                </li>
+              ))
+            ) : (
+              <li>
+                <span className="text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                  No items
+                </span>
+              </li>
+            )}
+          </ol>
+        </nav>
+      </div>
+    </div>
+  );
+};
 
-export default Breadcrumb
+export default Breadcrumb;

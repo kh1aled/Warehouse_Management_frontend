@@ -12,21 +12,37 @@ import { useState } from 'react'
 import logo from '@/assets/header-profile.svg'
 import Image from 'next/image'
 import Sidebar from '@/components/Sidebar'
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 
-const Navigation = ({ user , lang , dir }) => {
+const Navigation = ({ user, lang, dir }) => {
     const { logout } = useAuth()
 
     const [open, setOpen] = useState(false)
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    
+    const pathname = usePathname();
+
     const toggleSidebar = () => {
-        
+
         setIsSidebarOpen(prev => !prev)
     }
 
+    const pathSegments = pathname.split("/").slice(2).join("/");//get pathname without lang
+
+
     return (
-        <nav className="navbar border-border flex justify-between items-center px-4 py-2">
-            <Sidebar
+        <nav
+            className="
+    navbar
+    flex justify-between items-center
+    px-4 py-1.5
+    border-transparent
+    border-b
+    dark:bg-black-color
+    dark:text-white-color
+    dark:border-b-white/10"
+
+        >
+            < Sidebar
                 dir={dir}
                 lang={lang}
                 isSidebarOpen={isSidebarOpen}
@@ -34,7 +50,7 @@ const Navigation = ({ user , lang , dir }) => {
             />
 
             {/* Toggler Button */}
-            <div id="navbar-toggler" className="navbar_toggler">
+            <div id="navbar-toggler" className="navbar_toggler" >
                 <button className="toggler_btn" onClick={toggleSidebar}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +62,7 @@ const Navigation = ({ user , lang , dir }) => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="feather feather-menu text-blue-500">
+                        className="feather feather-menu text-blue-500 dark:text-black">
                         <line x1="3" y1="12" x2="21" y2="12" />
                         <line x1="3" y1="6" x2="21" y2="6" />
                         <line x1="3" y1="18" x2="21" y2="18" />
@@ -55,28 +71,31 @@ const Navigation = ({ user , lang , dir }) => {
             </div>
 
             {/* Navbar Items */}
-            <ul className="navbar_list flex items-center gap-6">
+            <ul className="navbar_list flex items-center gap-6" >
                 {/* Add Button */}
-                <li className="navbar_item cursor-pointer">
-                    <a href="#" className="navbar_link border-border add_link">
+                <li className="navbar_item cursor-pointer" >
+                    <Link href={`/${lang}/products/add`} className="navbar_link  add_link">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             strokeWidth={1.5}
                             stroke="currentColor"
-                            className="size-6 text-neutral-700 hover:text-neutral-900">
+                            className="size-6 text-neutral-700 dark:text-white-color hover:text-neutral-900">
                             <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                                 d="M12 4.5v15m7.5-7.5h-15"
                             />
                         </svg>
-                    </a>
+                    </Link>
                 </li>
 
+                {/* theme switcher */}
+                < ThemeSwitcher />
+
                 {/* Language Switcher */}
-                <li className="navbar_item cursor-pointer">
+                <li className="navbar_item cursor-pointer" >
                     <div className="flex items-center gap-2">
                         <div className="hidden md:flex items-center gap-2 relative ">
                             {/* <span className="text-[14px] font-bold text-body group">ENG</span> */}
@@ -84,12 +103,12 @@ const Navigation = ({ user , lang , dir }) => {
                                 align="right"
                                 width="48"
                                 trigger={
-                                    <button className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition duration-150 ease-in-out">
+                                    <button className="flex items-center text-sm font-medium text-gray-500  dark:text-white-color hover:text-gray-700 focus:outline-none transition duration-150 ease-in-out">
                                         <div className="flex justify-center items-center gap-2">
                                             <div>
                                                 <i className="fa-solid fa-globe"></i>
                                             </div>
-                                            <div className=' uppercase'>{lang}</div>
+                                            <div className=' uppercase dark:text-white-color'>{lang}</div>
                                         </div>
 
                                         <div className="ml-1">
@@ -106,20 +125,21 @@ const Navigation = ({ user , lang , dir }) => {
                                         </div>
                                     </button>
                                 }>
-                                {/* Authentication */}
-                                <DropdownLink href={`/en/dashboard`}>
+                                {/* Change Language */}
+                                <DropdownLink href={`/en/${pathSegments}`}>
                                     En
                                 </DropdownLink>
-                                <DropdownLink href={`/ar/dashboard`}>
+                                <DropdownLink href={`/ar/${pathSegments}`}>
                                     AR
                                 </DropdownLink>
+
                             </Dropdown>
                         </div>
                     </div>
                 </li>
 
                 {/* Settings Dropdown */}
-                <li className="navbar_item cursor-pointer">
+                <li className="navbar_item cursor-pointer" >
                     <div className="hidden sm:flex sm:items-center sm:ml-6">
                         <Dropdown
                             align="right"
@@ -136,16 +156,16 @@ const Navigation = ({ user , lang , dir }) => {
                                         </span>
 
                                         <div className="hidden md:flex flex-col justify-center gap-0">
-                                            <h5 className="text-heading font-bold text-[15px] capitalize">
+                                            <h5 className="text-heading font-bold text-[15px] capitalize dark:text-white-color">
                                                 {user?.name || user?.email}
                                             </h5>
-                                            <span className="text-body font-normal text-[13px]">
+                                            <span className="text-body font-normal text-[13px] dark:text-white-color/30">
                                                 {user?.email}
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div className="ml-1">
+                                    <div className="ms-4">
                                         <svg
                                             className="fill-current h-4 w-4"
                                             xmlns="http://www.w3.org/2000/svg"
@@ -199,8 +219,8 @@ const Navigation = ({ user , lang , dir }) => {
                         </button>
                     </div>
                 </li>
-            </ul>
-        </nav>
+            </ul >
+        </nav >
     )
 }
 

@@ -1,3 +1,4 @@
+'use client';
 import { useTranslations } from 'next-intl';
 import LoginLinks from './LoginLinks';
 import Image from 'next/image';
@@ -11,7 +12,7 @@ const Home = () => {
 
                 {/* أيقونة جميلة */}
                 <div className="flex  w-24 h-24 mx-auto mb-6 bg-blue-100 dark:bg-gray-800 rounded-full shadow-lg items-center justify-center">
-                    <Image src={'/warehouse.png'} alt='warhouse logo' width={100} height={100}/>
+                    <Image src={'/warehouse.png'} alt='warhouse logo' width={100} height={100} />
                 </div>
 
                 {/* العنوان */}

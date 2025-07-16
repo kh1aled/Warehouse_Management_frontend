@@ -5,19 +5,329 @@
         "description": "قم بإدارة مخزنك بكفاءة مع نظامنا."
     },
     "dashboard": {
-        "title": "لوحة التحكم"
+        "title": "لوحة التحكم",
+        "welcome": "مرحبًا بك في لوحة التحكم"
     },
     "products": {
         "title": "المنتجات",
         "product_name": "المنتج",
         "products_list": "قائمة المنتجات",
-        "add_product": "اضافة منتج"
+        "add_product": "اضافة منتج",
+        "search": "بحث",
+        "filter": "تصفية",
+        "category": "الفئة",
+        "brand": "العلامة التجارية",
+        "price": "السعر",
+        "quantity": "الكمية",
+        "unit": "الوحدة",
+        "status": "الحالة",
+        "actions": "الإجراءات",
+        "edit": "تعديل",
+        "delete": "حذف",
+        "description": "الوصف",
+        "sellingPrice": "سعر البيع",
+        "buyingPrice": "سعر الشراء",
+        "count": "العدد",
+        "image": "الصورة",
+        "name": "الاسم",
+        "status_active": "نشط",
+        "status_inactive": "غير نشط",
+        "status_out_of_stock": "نفد من المخزون",
+        "status_discontinued": "تم إيقافه",
+        "status_pending": "قيد الانتظار",
+        "createdAt": "تاريخ الإنشاء",
+        "weight": "الوزن",
+        "minQuantity": "الحد الأدنى للكمية",
+        "no_products_found": "لا توجد منتجات",
+        "confirm_delete": "هل أنت متأكد أنك تريد حذف هذا المنتج؟",
+        "delete_success": "تم حذف المنتج بنجاح",
+        "delete_error": "خطأ في حذف المنتج",
+        "add_product_success": "تم إضافة المنتج بنجاح",
+        "add_product_error": "خطأ في إضافة المنتج",
+        "edit_product_success": "تم تحديث المنتج بنجاح",
+        "edit_product_error": "خطأ في تحديث المنتج",
+        "cancel": "إلغاء",
+        "save": "حفظ",
+        "update": "تحديث",
+        "edit_product": "تعديل المنتج",
+        "delete_product": "حذف المنتج",
+        "fields": {
+            "name": {
+                "label": "اسم المنتج",
+                "placeholder": "اسم المنتج"
+            },
+            "description": {
+                "label": "الوصف",
+                "placeholder": "وصف المنتج"
+            },
+            "count": {
+                "label": "الكمية",
+                "placeholder": "0"
+            },
+            "minimum_quantity": {
+                "label": "أقل كمية",
+                "placeholder": "0"
+            },
+            "unit": {
+                "label": "الوحدة",
+                "placeholder": "مثال: قطعة، كجم"
+            },
+            "buying_price": {
+                "label": "سعر الشراء",
+                "placeholder": "0.00"
+            },
+            "selling_price": {
+                "label": "سعر البيع",
+                "placeholder": "0.00"
+            },
+            "weight": {
+                "label": "الوزن",
+                "placeholder": "مثال: 500 جم"
+            },
+            "category": {
+                "label": "الفئة",
+                "placeholder": "اختر الفئة"
+            },
+            "status": {
+                "label": "الحالة",
+                "options": {
+                    "active": "نشط",
+                    "inactive": "غير نشط"
+                }
+            }
+        },
+        "image_upload": {
+            "dropText": "قم بإسقاط صورة المنتج هنا أو اضغط بالأسفل",
+            "browseButton": "تصفح الملفات",
+            "note": "JPEG, JPG, PNG | الحد الأقصى 2 ميجابايت",
+            "alt": "معاينة الصورة",
+            "placeholderAlt": "أيقونة رفع الصورة"
+        },
+        "add": {
+            "products": "المنتجات",
+            "addProduct": "إضافة منتج",
+            "alerts": {
+                "create_success": "تم إضافة المنتج بنجاح",
+                "field_errors": "حدثت أخطاء في الحقول",
+                "create_error": "حدث خطأ أثناء إضافة المنتج",
+                "categories_error": "حدث خطأ أثناء جلب الفئات",
+                "delete_confirm_title": "هل أنت متأكد أنك تريد حذف هذا العنصر؟",
+                "delete_confirm_text": "لن تتمكن من التراجع عن هذا الإجراء!",
+                "confirm_button": "تأكيد",
+                "cancel_button": "إلغاء",
+                "deleted_success": "تم الحذف بنجاح.",
+                "cancelled": "تم الإلغاء."
+            },
+            "createButton": "إنشاء المنتج",
+            "saveButton": "جاري الإنشاء..."
+        },
+        "product_edit": {
+            "title": "المنتجات",
+            "EditProduct": "تعديل منتج",
+            "alerts": {
+                "loadError": "حدث خطأ أثناء تحميل بيانات المنتج.",
+                "categoriesError": "حدث خطأ أثناء تحميل التصنيفات.",
+                "updateSuccess": "تم تحديث المنتج بنجاح.",
+                "updateError": "حدث خطأ أثناء تحديث المنتج.",
+                "fieldErrors": "يرجى تصحيح الأخطاء في النموذج."
+            },
+            "createButton": "تحديث المنتج",
+            "saveButton": "جاري التحديث..."
+        },
+        "categories": {
+            "breadcrumb": "التصنيفات",
+            "categoryName": "اسم التصنيف",
+            "enterCategoryName": "أدخل اسم التصنيف",
+            "description": "الوصف",
+            "enterCategoryDescription": "أدخل وصف التصنيف",
+            "dropImageHere": "اسحب الصورة هنا",
+            "or": "أو",
+            "browseFile": "تصفح الملفات",
+            "allowedFormats": "الصيغ المسموحة: jpg, png, jpeg",
+            "createCategory": "إنشاء تصنيف",
+            "search": "ابحث في التصنيفات...",
+            "id": "المعرف",
+            "image": "الصورة",
+            "name": "الاسم",
+            "createdAt": "تاريخ الإنشاء",
+            "actions": "الإجراءات",
+            "editCategory": "تعديل التصنيف",
+            "deleteCategory": "حذف التصنيف",
+            "confirmDelete": "هل أنت متأكد أنك تريد حذف هذا التصنيف؟",
+            "deleteSuccess": "تم حذف التصنيف بنجاح",
+            "deleteError": "حدث خطأ أثناء حذف التصنيف",
+            "fetchError": "حدث خطأ أثناء جلب التصنيفات",
+            "noCategories": "لا توجد تصنيفات",
+            "loading": "جاري التحميل...",
+            "successAdd": "تمت إضافة التصنيف بنجاح",
+            "errorFields": "يرجى التحقق من الحقول",
+            "errorAdd": "حدث خطأ أثناء إضافة التصنيف",
+            "noImage": "لا توجد صورة",
+            "edit": {
+                "editCategory": "جاري الحفظ...",
+                "updateButton": "تحديث الصنف",
+                "alerts": {
+                    "loadError": "حدث خطأ أثناء تحميل بيانات الصنف",
+                    "updateSuccess": "تم تحديث الصنف بنجاح",
+                    "fieldErrors": "يرجى تصحيح الأخطاء المحددة",
+                    "updateError": "حدث خطأ أثناء تحديث الصنف"
+                }
+            }
+        },
+        "brands": {
+            "breadcrumbTitle": "العلامات التجارية",
+            "products": "المنتجات",
+            "successAdd": "تم إنشاء البراند بنجاح",
+            "errorAdd": "حدث خطأ أثناء إنشاء البراند",
+            "errorFields": "بعض الحقول تحتوي على أخطاء",
+            "confirmDelete": "هل أنت متأكد أنك تريد حذف هذا البراند؟",
+            "delete": "حذف",
+            "cancel": "إلغاء",
+            "deleteSuccess": "تم حذف البراند بنجاح",
+            "deleteError": "حدث خطأ أثناء حذف البراند",
+            "createButton": "إنشاء براند",
+            "editButton": "تعديل البراند",
+            "deleteButton": "حذف البراند",
+            "imageUpload": {
+                "dropText": "اسحب شعار البراند هنا",
+                "or": "أو",
+                "browseButton": "تصفح الملفات",
+                "note": "الامتدادات المسموحة JPEG, JPG & PNG | الحجم الأقصى 2 ميجابايت",
+                "previewAlt": "معاينة شعار البراند",
+                "iconAlt": "أيقونة رفع الملف"
+            },
+            "fields": {
+                "name": { "label": "الاسم", "placeholder": "أدخل الاسم" },
+                "code": { "label": "الكود", "placeholder": "أدخل الكود" },
+                "country": { "label": "الدولة", "placeholder": "أدخل الدولة" },
+                "description": {
+                    "label": "الوصف",
+                    "placeholder": "أدخل الوصف"
+                },
+                "website": {
+                    "label": "الموقع الإلكتروني",
+                    "placeholder": "أدخل الموقع الإلكتروني"
+                },
+                "status": {
+                    "label": "الحالة",
+                    "active": "نشط",
+                    "inactive": "غير نشط"
+                }
+            },
+            "table": {
+                "image": "الصورة",
+                "name": "الاسم",
+                "code": "الكود",
+                "country": "الدولة",
+                "description": "الوصف",
+                "status": "الحالة",
+                "website": "الموقع الإلكتروني",
+                "action": "الإجراءات",
+                "loading": "جاري التحميل...",
+                "noData": "لا توجد براندات.",
+                "noImage": "لا توجد صورة"
+            }
+        }
+    },
+    "sidebar": {
+        "dashboard": "الرئيسية",
+        "products": "المنتجات",
+        "productList": "قائمة المنتجات",
+        "addProduct": "إضافة منتج",
+        "category": "الفئات",
+        "brand": "العلامات التجارية",
+        "people": "الأشخاص",
+        "addCustomer": "إضافة عميل",
+        "customerList": "قائمة العملاء",
+        "addSupplier": "إضافة مورد",
+        "supplierList": "قائمة الموردين",
+        "addEmployee": "إضافة موظف",
+        "employeesList": "قائمة الموظفين",
+        "users": "المستخدمين",
+        "addUser": "إضافة مستخدم",
+        "userList": "قائمة المستخدمين",
+        "roles": "الأدوار"
     },
     "suppliers": {
-        "title": "الموردين",
-        "supplier_name": "المورد",
+        "title": "الموردون",
+        "supplier_name": "مورد",
         "suppliers_list": "قائمة الموردين",
-        "add_supplier": "إضافة مورد"
+        "add_supplier": "إضافة مورد",
+        "edit_supplier": "تعديل المورد",
+        "delete_supplier": "حذف المورد",
+        "confirm_delete": "هل أنت متأكد أنك تريد حذف هذا المورد؟",
+        "delete_success": "تم حذف المورد بنجاح",
+        "delete_error": "حدث خطأ أثناء حذف المورد",
+        "search": "ابحث...",
+        "no_suppliers_found": "لم يتم العثور على موردين.",
+        "actions": "الإجراءات",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "رقم الهاتف",
+        "address": "العنوان",
+        "country": "الدولة",
+        "city": "المدينة",
+        "zip_code": "الرمز البريدي",
+        "created_at": "تاريخ الإنشاء",
+        "cancel": "إلغاء",
+        "delete": "حذف",
+        "alerts": {
+            "generatingPdfTitle": "جاري إنشاء ملف PDF...",
+            "successTitle": "تم إنشاء الملف",
+            "successText": "تم إنشاء ملف PDF بنجاح",
+            "errorTitle": "حدث خطأ",
+            "unknownError": "حدث خطأ غير معروف"
+        },
+        "fields": {
+            "name": {
+                "label": "الاسم",
+                "placeholder": "أدخل اسم المورد"
+            },
+            "phone": {
+                "label": "رقم الهاتف",
+                "placeholder": "أدخل رقم الهاتف"
+            },
+            "email": {
+                "label": "البريد الإلكتروني",
+                "placeholder": "أدخل البريد الإلكتروني"
+            },
+            "country": {
+                "label": "الدولة",
+                "placeholder": "أدخل الدولة"
+            },
+            "city": {
+                "label": "المدينة",
+                "placeholder": "أدخل المدينة"
+            },
+            "address": {
+                "label": "العنوان",
+                "placeholder": "أدخل العنوان"
+            },
+            "zip_code": {
+                "label": "الرمز البريدي",
+                "placeholder": "أدخل الرمز البريدي"
+            }
+        },
+        "add": {
+            "addSupplier": "إضافة مورد",
+            "createButton": "إنشاء مورد",
+            "saveButton": "جارٍ الحفظ...",
+            "alerts": {
+                "create_success": "تم إنشاء المورد بنجاح",
+                "create_error": "حدث خطأ أثناء إنشاء المورد",
+                "field_errors": "يرجى التحقق من الحقول والمحاولة مرة أخرى"
+            }
+        },
+         "page": {
+        "title": "تعديل المورد",
+        "breadcrumb": ["الأشخاص", "الموردون", "تعديل"],
+        "updateSuccess": "تم تحديث المورد بنجاح",
+        "updateError": "حدث خطأ أثناء تحديث بيانات المورد",
+        "loadError": "حدث خطأ أثناء تحميل بيانات المورد",
+        "fieldErrors": "يرجى التحقق من الحقول والمحاولة مرة أخرى",
+        "createButton": "تحديث المورد",
+        "saveButton": "جارٍ الحفظ..."
+    }
     },
     "employees": {
         "title": "الموظفين",
@@ -26,16 +336,59 @@
         "add_employee": "إضافة موظف"
     },
     "customers": {
-        "title": "العملاء",
-        "customer_name": "العميل",
         "customers_list": "قائمة العملاء",
-        "add_customer": "إضافة عميل"
+        "add_customer": "إضافة عميل",
+        "search": "بحث",
+        "no_customers_found": "لم يتم العثور على عملاء.",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "phone": "الهاتف",
+        "address": "العنوان",
+        "country": "الدولة",
+        "city": "المدينة",
+        "zip_code": "الرمز البريدي",
+        "created_at": "تاريخ الإنشاء",
+        "actions": "الإجراءات",
+        "edit_customer": "تعديل العميل",
+        "delete_customer": "حذف العميل",
+        "confirm_delete": "هل أنت متأكد أنك تريد حذف هذا العميل؟",
+        "delete_success": "تم حذف العميل بنجاح.",
+        "delete_error": "حدث خطأ أثناء حذف العميل.",
+        "cancel": "إلغاء",
+        "delete": "حذف",
+
+        "page": {
+            "title": "تعديل العميل",
+            "breadcrumb": ["العملاء", "تعديل العميل"],
+            "updateSuccess": "تم تعديل بيانات العميل بنجاح.",
+            "updateError": "حدث خطأ أثناء تعديل البيانات.",
+            "loadError": "حدث خطأ أثناء تحميل بيانات العميل.",
+            "fieldErrors": "حدثت أخطاء في الحقول.",
+            "saveButton": "جاري التحديث...",
+            "createButton": "تحديث العميل"
+        },
+        "fields": {
+            "name": { "label": "الاسم" },
+            "phone": { "label": "الهاتف" },
+            "email": { "label": "البريد الإلكتروني" },
+            "country": { "label": "الدولة" },
+            "city": { "label": "المدينة" },
+            "address": { "label": "العنوان" },
+            "zip_code": { "label": "الرمز البريدي" }
+        },
+        "alerts": {
+            "generatingPdfTitle": "جاري إنشاء الملف...",
+            "successTitle": "تم إنشاء الملف",
+            "successText": "شكراً لك، تم إنشاء الملف بنجاح",
+            "errorTitle": "حصلت مشكلة أثناء إنشاء الملف",
+            "unknownError": "حدث خطأ غير معروف"
+        }
     },
-      "auth":{
-        "login" : {
+    "auth": {
+        "login": {
             "title": "تسجيل الدخول",
-            "email" : "البريد الإلكتروني",
-            "password" : "كلمة المرور",
+            "email": "البريد الإلكتروني",
+            "password": "كلمة المرور",
             "remember_me": "ذكرني",
             "forgot_password": "نسيت كلمة المرور؟",
             "login_button": "تسجيل الدخول",
@@ -65,7 +418,7 @@
             "check_your_email": "الرجاء التحقق من بريدك الإلكتروني.",
             "if_you_did_not_receive_the_email": "إذا لم تستلم البريد الإلكتروني،",
             "click_here_to_request_another": "انقر هنا لطلب آخر.",
-            "logout" : "تسجيل الخروج",
+            "logout": "تسجيل الخروج",
             "verification_notice": "شكرًا لتسجيلك! قبل البدء، يرجى التحقق من عنوان بريدك الإلكتروني من خلال الرابط الذي أرسلناه إليك. إذا لم تستلم البريد الإلكتروني، سنكون سعداء بإرسال آخر.",
             "resend_verification_email": "إعادة إرسال بريد التحقق"
         },
@@ -76,8 +429,7 @@
             "confirm_password": "تأكيد كلمة المرور",
             "send_reset_link": "إرسال رابط إعادة التعيين",
             "back_to_login": "العودة إلى تسجيل الدخول"
-        }
-        ,
+        },
         "forgot_password": {
             "title": "نسيت كلمة المرور",
             "description": "إذا نسيت كلمة المرور، يمكنك إعادة تعيينها هنا.",
@@ -85,5 +437,14 @@
             "send_reset_link": "إرسال رابط إعادة التعيين",
             "back_to_login": "العودة إلى تسجيل الدخول"
         }
-    } 
+    },
+    "pagination": {
+        "previous": "السابق",
+        "next": "التالي",
+        "Showing": "عرض",
+        "from": "من",
+        "to": "إلى",
+        "of": "من أصل",
+        "results": "نتيجة"
+    }
 }
