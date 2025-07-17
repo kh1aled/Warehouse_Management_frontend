@@ -382,10 +382,143 @@
         }
     },
     "employees": {
-        "title": "employees",
+        "title": "Employees",
         "employee_name": "Employee",
         "employees_list": "Employees List",
-        "add_employee": "add employee"
+        "add_employee": "Add Employee",
+        "edit_employee": "Edit Employee",
+        "delete_employee": "Delete Employee",
+        "search": "Search",
+        "no_employees_found": "No employees found.",
+        "image": "Image",
+        "name": "Name",
+        "email": "Email",
+        "username": "Username",
+        "phone": "Phone",
+        "address": "Address",
+        "role": "Role",
+        "status": "Status",
+        "hire_date": "Hire Date",
+        "salary": "Salary",
+        "actions": "Actions",
+        "confirm_delete": "Are you sure you want to delete?",
+        "delete_success": "Employee deleted successfully.",
+        "delete_error": "Error deleting employee.",
+        "cancel": "Cancel",
+        "delete": "Delete",
+
+        "add": {
+            "title": "Add New Employee",
+            "header": "Employee Information",
+            "upload_image": "Upload Image",
+            "name": "Full Name",
+            "email": "Email Address",
+            "username": "Username",
+            "phone": "Phone Number",
+            "address": "Address",
+            "role": "Select Role",
+            "status": "Select Status",
+            "hire_date": "Hire Date",
+            "salary": "Salary Amount",
+            "submit": "Save Employee",
+            "cancel": "Cancel",
+            "success": "Employee added successfully.",
+            "error": "Error adding employee. Please try again.",
+            "required": "This field is required",
+            "invalid_email": "Invalid email address"
+        },
+
+        "edit": {
+            "title": "Edit Employee",
+            "header": "Update Employee Information",
+            "upload_image": "Change Image",
+            "name": "Full Name",
+            "email": "Email Address",
+            "username": "Username",
+            "phone": "Phone Number",
+            "address": "Address",
+            "role": "Select Role",
+            "status": "Select Status",
+            "hire_date": "Hire Date",
+            "salary": "Salary Amount",
+            "submit": "Update Employee",
+            "cancel": "Cancel",
+            "success": "Employee updated successfully.",
+            "error": "Error updating employee. Please try again.",
+            "required": "This field is required",
+            "invalid_email": "Invalid email address",
+            "saving": "Saving..."
+        },
+
+        "alerts": {
+            "create_success": "Employee added successfully.",
+            "create_error": "Error adding employee.",
+            "updateSuccess": "Employee updated successfully.",
+            "updateError": "Error updating employee.",
+            "fieldErrors": "Please check the fields for errors.",
+            "loadError": "Failed to load employee data."
+        },
+
+        "saveButton": "Saving...",
+        "createButton": "Create Employee",
+
+        "fields": {
+            "name": {
+                "label": "Name",
+                "placeholder": "Enter full name"
+            },
+            "username": {
+                "label": "Username",
+                "placeholder": "Enter username"
+            },
+            "email": {
+                "label": "Email",
+                "placeholder": "Enter email"
+            },
+            "password": {
+                "label": "Password",
+                "placeholder": "Enter password"
+            },
+            "hire_date": {
+                "label": "Hire Date",
+                "placeholder": "YYYY-MM-DD"
+            },
+            "role": {
+                "label": "Role",
+                "placeholder": "Enter role"
+            },
+            "status": {
+                "label": "Status",
+                "options": {
+                    "active": "Active",
+                    "inactive": "Inactive"
+                }
+            },
+            "phone": {
+                "label": "Phone",
+                "placeholder": "Enter phone number"
+            },
+            "address": {
+                "label": "Address",
+                "placeholder": "Enter address"
+            },
+            "salary": {
+                "label": "Salary",
+                "placeholder": "Enter salary"
+            },
+            "photo": {
+                "label": "Employee Photo",
+                "placeholder": "Upload employee photo"
+            }
+        },
+
+        "image_upload": {
+            "dropText": "Drag and drop employee photo here",
+            "browseButton": "Browse Files",
+            "note": "Accepted formats: JPEG, JPG, PNG | Max size: 2MB",
+            "alt": "Employee image preview",
+            "placeholderAlt": "Upload icon"
+        }
     },
     "auth": {
         "login": {

@@ -1,45 +1,37 @@
 'use client';
 
-// Import hooks and libraries
 import { useTranslations } from "next-intl";
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// Import UI components
+// UI components
 import Breadcrumb from "@/components/Breadcrumb";
 import Dropdown from "@/components/Dropdown";
 import DropdownLink, { DropdownButton } from "@/components/DropdownLink";
 import AnimateImage from "@/components/AnimateImage";
 import Loader from "@/components/Loader";
-import Pagination from "@/components/Pagination"
-// Import API functions
+import Pagination from "@/components/Pagination";
+
+// API
 import { deleteProductById, exportProductsPdf, getProductsWithPagination } from "@/api/products";
 import { createToast, createAlert, createConfirm } from "@/lib/sweetalert";
 
 const Page = ({ params }) => {
-    // Initialize translations
     const t = useTranslations("products");
-
-    // Define state variables
-    const [products, setProducts] = useState([]);        // Filtered products to display
-    const [loading, setLoading] = useState(true);        // Loading state
-    const [fetchError, setFetchError] = useState(null);  // Error message if fetching fails
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [fetchError, setFetchError] = useState(null);
     const [pagination, setPagination] = useState({});
     const [searchQuery, setSearchQuery] = useState("");
 
-
-
-    // Get current route path and locale
     const path = usePathname();
     const { locale } = params;
 
-    // Create alert/confirm/toast helpers
     const Toast = createToast();
     const Alert = createAlert();
     const Confirm = createConfirm();
 
-    // Fetch products from API and update state
     const fetchProducts = useCallback(({ page = 1, query = "" }) => {
         setLoading(true);
         setFetchError(null);
@@ -61,22 +53,10 @@ const Page = ({ params }) => {
             .finally(() => setLoading(false));
     }, [t]);
 
-    //when change page
-    const handlePageChange = (page) => {
-        fetchProducts({ page, query: searchQuery });
-    };
-
-    // Load products when component mounts
     useEffect(() => {
         fetchProducts({ page: 1 });
     }, [fetchProducts]);
 
-    useEffect(() => {
-        console.log(pagination);
-    }, [pagination])
-
-
-    // Handle product deletion with confirmation dialog
     const handleDelete = async (id) => {
         const result = await Confirm.fire({
             icon: 'warning',
@@ -89,7 +69,7 @@ const Page = ({ params }) => {
 
         try {
             await deleteProductById(id);
-            fetchProducts(); // Refresh product list after deletion
+            fetchProducts({ page: 1, query: searchQuery });
             Toast.fire({ icon: 'success', title: t("delete_success") });
         } catch (error) {
             console.error("Delete error:", error);
@@ -97,16 +77,18 @@ const Page = ({ params }) => {
         }
     };
 
-    // Handle search input to filter products by name, description, or category
     const handleSearch = (e) => {
         const value = e.target.value.trim();
         setSearchQuery(value);
         fetchProducts({ page: 1, query: value });
     };
 
+    const handlePageChange = (page) => {
+        fetchProducts({ page, query: searchQuery });
+    };
+
     const handleExportPdf = async () => {
         try {
-            // عرض تحميل
             Alert.fire({
                 title: "جاري انشاء الملف...",
                 allowOutsideClick: false,
@@ -134,19 +116,14 @@ const Page = ({ params }) => {
 
     return (
         <section className="w-full px-2 py-5">
-            {/* Breadcrumb navigation */}
             <Breadcrumb title={t("products_list")} listItems={[t("products_list")]} />
 
-            {/* Main container */}
             <div className="main_section">
-
-                {/* Add product button */}
                 <div className="w-[230px] cursor-pointer">
                     <Link
                         href={`${path}/add`}
                         className="main_btn capitalize bg-[var(--green-color)] text-white transition-colors hover:bg-[var(--main-color)] duration-150"
                     >
-                        {/* Plus icon */}
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             strokeWidth={2.5} stroke="currentColor" className="size-6">
                             <path strokeLinecap="round" strokeLinejoin="round"
@@ -156,9 +133,7 @@ const Page = ({ params }) => {
                     </Link>
                 </div>
 
-                {/* Search and tools */}
                 <div className="w-full mt-4 flex items-center justify-between">
-                    {/* Search input */}
                     <input
                         type="search"
                         onChange={handleSearch}
@@ -166,40 +141,19 @@ const Page = ({ params }) => {
                         className="search-input border-border"
                     />
 
-                    {/* Filter and export buttons */}
                     <div className="flex-center gap-3">
-                        {/* Filter button */}
-                        {/* <div className="flex-center gap-2 border border-[var(--bink-color)] px-3 py-2 cursor-pointer hover:bg-[var(--bink-color)] group hover:text-white transition-colors duration-150">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                strokeWidth={1.5} stroke="currentColor" className="size-6 text-[var(--bink-color)] group-hover:text-white">
-                                <path strokeLinecap="round" strokeLinejoin="round"
-                                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                            </svg>
-                            <span className="text-[var(--bink-color)] text-sm font-semibold group-hover:text-white">
-                                Filter
-                            </span>
-                        </div> */}
-
-                        {/* Export PDF */}
                         <button onClick={handleExportPdf} className="flex-center border border-[var(--orange-color)] w-10 h-10 cursor-pointer hover:bg-[var(--orange-color)] group">
                             <i className="fa-solid fa-file-pdf text-[var(--orange-color)] group-hover:text-white text-2xl"></i>
                         </button>
-
-                        {/* Print */}
-                        {/* <div className="flex-center border border-[var(--green-color)] w-10 h-10 cursor-pointer hover:bg-[var(--green-color)] group">
-                            <i className="fa-solid fa-print text-[var(--green-color)] group-hover:text-white text-2xl"></i>
-                        </div> */}
                     </div>
                 </div>
 
-                {/* Error message if fetching failed */}
                 {fetchError && (
                     <div className="text-red-500 text-center mt-4">
                         {fetchError}
                     </div>
                 )}
 
-                {/* Product table */}
                 <div className="table_container">
                     <table className="w-full custome_table">
                         <thead>
@@ -221,7 +175,6 @@ const Page = ({ params }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* Show loader while loading */}
                             {loading ? (
                                 <tr>
                                     <td colSpan={14} className="text-center py-4">
@@ -231,7 +184,6 @@ const Page = ({ params }) => {
                                     </td>
                                 </tr>
                             ) : products.length === 0 ? (
-                                // No products found
                                 <tr>
                                     <td colSpan={14} className="text-center py-4 text-gray-400">
                                         <i className="fa-solid fa-box-open text-4xl mb-2"></i>
@@ -239,9 +191,8 @@ const Page = ({ params }) => {
                                     </td>
                                 </tr>
                             ) : (
-                                // Display products
-                                products.map(product => (
-                                    <tr key={product.id}>
+                                products.map((product, index) => (
+                                    <tr key={`${product.id}-${index}`}>
                                         <td>{product.id}</td>
                                         <td className="w-12 h-12">
                                             <AnimateImage
@@ -261,7 +212,7 @@ const Page = ({ params }) => {
                                         <td>{product.unit}</td>
                                         <td>{product.buying_price}</td>
                                         <td>{product.selling_price}</td>
-                                        <td>{product.weight ? product.weight : '-'}</td>
+                                        <td>{product.weight || '-'}</td>
                                         <td>
                                             {product.status === "active" ? (
                                                 <span className="text-green-500 font-semibold">
@@ -275,8 +226,7 @@ const Page = ({ params }) => {
                                         </td>
                                         <td>{new Date(product.created_at).toLocaleDateString()}</td>
                                         <td>
-                                            {/* Action dropdown */}
-                                            <div className="dropdown_container ">
+                                            <div className="dropdown_container">
                                                 <Dropdown
                                                     align={locale === "ar" ? "left" : "right"}
                                                     width="48"
@@ -293,11 +243,9 @@ const Page = ({ params }) => {
                                                         </button>
                                                     }
                                                 >
-                                                    {/* Edit product link */}
                                                     <DropdownLink href={`${path}/edit/${product.id}`}>
                                                         {t('edit_product')}
                                                     </DropdownLink>
-                                                    {/* Delete product button */}
                                                     <DropdownButton onClick={() => handleDelete(product.id)}>
                                                         {t('delete_product')}
                                                     </DropdownButton>
@@ -311,12 +259,11 @@ const Page = ({ params }) => {
                     </table>
                 </div>
 
-                {/* Pagination */}
                 <div className="w-full mt-4">
                     <Pagination
                         pagination={pagination}
                         lang={locale}
-                        onPageChange={(page) => fetchProducts({ page })}
+                        onPageChange={handlePageChange}
                     />
                 </div>
             </div>
