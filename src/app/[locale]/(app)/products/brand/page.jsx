@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { createToast, createAlert, createConfirm } from "@/lib/sweetalert";
 import AnimateImage from "@/components/AnimateImage";
-import Loader from "@/components/Loader";
+import SkeletonRows from "@/components/SkeletonRows";
 
 const Page = ({ params }) => {
     const t = useTranslations("products");
@@ -226,7 +226,7 @@ const Page = ({ params }) => {
                                 <tr>
                                     <td colSpan={9} className="text-center py-4">
                                         <div className="w-full p-8 relative">
-                                            <Loader />
+                                            <SkeletonRows/>
                                         </div>
                                     </td>
                                 </tr>

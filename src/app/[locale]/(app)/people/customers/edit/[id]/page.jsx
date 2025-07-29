@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
-import Loader from "@/components/Loader";
+import EditCustomerSkeleton from "@/components/EditCustomerSkeleton";
 import { getCustomerById, updateCustomerById } from "@/api/customers";
 import { createToast, createAlert } from "@/lib/sweetalert";
 import { useTranslations } from "next-intl";
@@ -104,7 +104,7 @@ const Page = ({ params }) => {
             <div className="main_section">
                 {loading ? (
                     <div className="w-full p-8 relative">
-                        <Loader />
+                        <EditCustomerSkeleton/>
                     </div>
                 ) : (
                     <>

@@ -14,7 +14,10 @@ const Register = () => {
     redirectIfAuthenticated: '/dashboard',
   })
 
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
@@ -26,6 +29,9 @@ const Register = () => {
 
     register({
       name,
+      username,
+      address,
+      phone,
       email,
       password,
       password_confirmation: passwordConfirmation,
@@ -48,6 +54,50 @@ const Register = () => {
           autoFocus
         />
         <InputError messages={errors.name} className="mt-2" />
+      </div>
+
+
+      {/* UserName */}
+      <div className="mt-4">
+        <Input
+          id="username"
+          type="text"
+          value={username}
+          className="block mt-1 w-full"
+          onChange={event => setUsername(event.target.value)}
+          placeholder={t('username')}
+          required
+        />
+        <InputError messages={errors.username} className="mt-2" />
+      </div>
+
+
+      {/* Address */}
+      <div className="mt-4">
+        <Input
+          id="address"
+          type="text"
+          value={address}
+          className="block mt-1 w-full"
+          onChange={event => setAddress(event.target.value)}
+          placeholder={t('address')}
+          required
+        />
+        <InputError messages={errors.address} className="mt-2" />
+      </div>
+
+      {/* Phone Number */}
+      <div className="mt-4">
+        <Input
+          id="phone"
+          type="tel"
+          value={phone}
+          className="block mt-1 w-full"
+          onChange={event => setPhone(event.target.value)}
+          placeholder={t('phone')}
+          required
+        />
+        <InputError messages={errors.phone} className="mt-2" />
       </div>
 
       {/* Email Address */}

@@ -8,19 +8,17 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Dropdown from "@/components/Dropdown";
 import DropdownLink, { DropdownButton } from "@/components/DropdownLink";
 import SkeletonRows from "@/components/SkeletonRows";
-import { getUsers, deleteUserById, exportUsersPdf } from "@/api/users";
+import { getRoles, deleteRoleById, exportRolesPdf } from "@/api/roles";
 import { createToast, createAlert, createConfirm } from "@/lib/sweetalert";
-import AnimateImage from "@/components/AnimateImage";
-
 
 const Page = ({ params }) => {
-    const t = useTranslations("users");
-    const tAlert = useTranslations("users.alerts");
+    const t = useTranslations("roles");
+    const tAlert = useTranslations("roles.alerts");
     const { locale } = params;
 
     const path = usePathname();
 
-    const [users, setUsers] = useState([]);
+    const [roles, setRoles] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -28,17 +26,17 @@ const Page = ({ params }) => {
     const Alert = createAlert();
     const Confirm = createConfirm();
 
-    const fetchUsers = useCallback(() => {
+    const fetchRoles = useCallback(() => {
         setLoading(true);
-        getUsers()
-            .then((data) => setUsers(data))
+        getRoles()
+            .then((data) => setRoles(data))
             .catch((error) => console.error("Fetch error:", error))
             .finally(() => setLoading(false));
     }, []);
 
     useEffect(() => {
-        fetchUsers();
-    }, [fetchUsers]);
+        fetchRoles();
+    }, [fetchRoles]);
 
     const handleDelete = async (id) => {
         const result = await Confirm.fire({
@@ -51,8 +49,8 @@ const Page = ({ params }) => {
         if (!result.isConfirmed) return;
 
         try {
-            await deleteUserById(id);
-            fetchUsers();
+            await deleteRoleById(id);
+            fetchRoles();
             Toast.fire({ icon: 'success', title: t("delete_success") });
         } catch (error) {
             console.error("Delete error:", error);
@@ -64,10 +62,9 @@ const Page = ({ params }) => {
         setSearchQuery(e.target.value.trim());
     };
 
-    const filteredUsers = users.filter((u) =>
-        u.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        u.username?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        u.email?.toLowerCase().includes(searchQuery.toLowerCase())
+    const filteredRoles = roles.filter((r) =>
+        r.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        r.id?.toString().includes(searchQuery)
     );
 
     const handleExportPdf = async () => {
@@ -80,7 +77,7 @@ const Page = ({ params }) => {
                 }
             });
 
-            await exportUsersPdf();
+            await exportRolesPdf();
 
             Alert.fire({
                 icon: "success",
@@ -98,7 +95,7 @@ const Page = ({ params }) => {
 
     return (
         <section className="w-full px-2 py-5">
-            <Breadcrumb title={t("users_list")} listItems={[t("users_list")]} />
+            <Breadcrumb title={t("roles_list")} listItems={[t("users_list") , t("roles_list")]} />
 
             <div className="main_section">
                 <div className="w-[230px] cursor-pointer">
@@ -111,7 +108,7 @@ const Page = ({ params }) => {
                             <path strokeLinecap="round" strokeLinejoin="round"
                                 d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-                        <span className="text-lg font-medium">{t("add_user")}</span>
+                        <span className="text-lg font-medium">{t("add_role")}</span>
                     </Link>
                 </div>
 
@@ -134,58 +131,37 @@ const Page = ({ params }) => {
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>{t('image')}</th>
                                 <th>{t("name")}</th>
-                                <th>{t("username")}</th>
-                                <th>{t("email")}</th>
-                                <th>{t("phone")}</th>
-                                <th>{t("role")}</th>
-                                <th>{t("address")}</th>
+                                <th>{t("created_at")}</th>
                                 <th>{t("actions")}</th>
                             </tr>
                         </thead>
                         <tbody>
                             {loading ? (
                                 <tr>
-                                    <td colSpan={9} className="text-center py-4">
+                                    <td colSpan={4} className="text-center py-4">
                                         <SkeletonRows />
                                     </td>
                                 </tr>
-                            ) : filteredUsers.length === 0 ? (
+                            ) : filteredRoles.length === 0 ? (
                                 <tr>
-                                    <td colSpan={9} className="text-center text-gray-400 py-4">
-                                        <i className="fa-solid fa-users-slash text-4xl mb-2"></i>
-                                        <p>{t("no_users_found")}</p>
+                                    <td colSpan={4} className="text-center text-gray-400 py-4">
+                                        <i className="fa-solid fa-user-lock text-4xl mb-2"></i>
+                                        <p>{t("no_roles_found")}</p>
                                     </td>
                                 </tr>
                             ) : (
-                                filteredUsers.map((user) => (
-                                    <tr key={user.id} className="py-6">
-                                        <td className="px-4 py-2">{user.id}</td>
-                                        <td className="w-12 h-12">
-                                            <AnimateImage
-                                                src={user.avatar}
-                                                alt={user.name}
-                                                width={12}
-                                                height={12}
-                                            />
-                                        </td>
-                                        <td className="px-4 py-2">{user.name}</td>
-                                        <td className="px-4 py-2">{user.username}</td>
-                                        <td className="px-4 py-2">{user.email}</td>
-                                        <td className="px-4 py-2">
-                                            {user.phone?.length
-                                                ? user.phone.map(p => p.phone_number).join(', ')
-                                                : '-'}
-                                        </td>
-                                        <td className="px-4 py-2">{user.role?.name || '-'}</td>
-                                        <td className="px-4 py-2">{user.address || '-'}</td>
+                                filteredRoles.map((role) => (
+                                    <tr key={role.id}>
+                                        <td className="px-4 py-2">{role.id}</td>
+                                        <td className="px-4 py-2">{role.name}</td>
+                                        <td className="px-4 py-2">{role.created_at}</td>
                                         <td>
                                             <Dropdown
                                                 align={locale === "ar" ? "left" : "right"}
                                                 width="48"
                                                 trigger={
-                                                    <button className="dropdown_btn">
+                                                    <button className="dropdown_btn w-full">
                                                         {t("actions")}
                                                         <svg className="ml-1 w-4 h-4 fill-current" viewBox="0 0 20 20">
                                                             <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -193,11 +169,11 @@ const Page = ({ params }) => {
                                                     </button>
                                                 }
                                             >
-                                                <DropdownLink href={`${path}/edit/${user.id}`}>
-                                                    {t("edit_user")}
+                                                <DropdownLink href={`${path}/edit/${role.id}`}>
+                                                    {t("edit_role")}
                                                 </DropdownLink>
-                                                <DropdownButton onClick={() => handleDelete(user.id)}>
-                                                    {t("delete_user")}
+                                                <DropdownButton onClick={() => handleDelete(role.id)}>
+                                                    {t("delete_role")}
                                                 </DropdownButton>
                                             </Dropdown>
                                         </td>

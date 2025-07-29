@@ -7,9 +7,9 @@ import { usePathname } from "next/navigation";
 import Breadcrumb from "@/components/Breadcrumb";
 import Dropdown from "@/components/Dropdown";
 import DropdownLink, { DropdownButton } from "@/components/DropdownLink";
-import Loader from "@/components/Loader";
 import { deleteCustomerById, getCustomers } from "@/api/customers";
 import { createToast, createAlert, createConfirm } from "@/lib/sweetalert";
+import SkeletonRows from "@/components/SkeletonRows";
 
 const Page = ({ params }) => {
     const t = useTranslations("customers");
@@ -179,7 +179,7 @@ const Page = ({ params }) => {
                                 <tr>
                                     <td colSpan={10} className="text-center py-4">
                                         <div className="w-full p-8 relative">
-                                            <Loader />
+                                            <SkeletonRows />
                                         </div>
                                     </td>
                                 </tr>

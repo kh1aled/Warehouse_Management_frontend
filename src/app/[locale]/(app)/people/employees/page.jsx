@@ -13,7 +13,7 @@ import { createToast, createAlert, createConfirm } from "@/lib/sweetalert";
 // import { exportEmployeesPdf } from "@/api/employees"; // Uncomment if available
 import AnimateImage from "@/components/AnimateImage";
 
-const Page = () => {
+const Page = ({params}) => {
     const t = useTranslations("employees");
     const tAlert = useTranslations("employees.alerts");
 
@@ -21,6 +21,7 @@ const Page = () => {
     const [loading, setLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState("");
     const path = usePathname();
+    const { locale } = params;
 
     const Toast = createToast();
     const Alert = createAlert();
@@ -190,7 +191,7 @@ const Page = () => {
                                         <td>{employee.salary}</td>
                                         <td>
                                             <Dropdown
-                                                align="right"
+                                                align={locale === "ar" ? "left" : "right"}
                                                 width="48"
                                                 trigger={
                                                     <button className="dropdown_btn">

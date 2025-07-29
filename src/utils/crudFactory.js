@@ -11,17 +11,12 @@ export default class CrudService {
         return res.data;
     }
 
-    getProductsWithPagination = async (page = 1) => {
-        const res = await axios.get(`/api/${this.resource}/paginated?page=${page}`);
-        return res.data;
-    }
-
     getAllWithPagination = async (page = 1, query = "") => {
         const params = new URLSearchParams();
         params.append("page", page);
         if (query) params.append("query", query);
 
-        const response = await axios.get(`/api/${this.resource}/paginated?${params.toString()}}`);
+        const response = await axios.get(`/api/${this.resource}/paginated?${params.toString()}`);
         return response.data;
     }
 

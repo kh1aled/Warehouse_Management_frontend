@@ -245,7 +245,7 @@
         "employeesList": "قائمة الموظفين",
         "users": "المستخدمين",
         "addUser": "إضافة مستخدم",
-        "userList": "قائمة المستخدمين",
+        "userList": "ادارة المستخدمين",
         "roles": "الأدوار"
     },
     "suppliers": {
@@ -404,8 +404,7 @@
             "updateSuccess": "تم تعديل الموظف بنجاح.",
             "updateError": "حدث خطأ أثناء تعديل الموظف.",
             "fieldErrors": "يرجى التحقق من الحقول المدخلة.",
-           "loadError": "فشل في تحميل بيانات الموظف."
-
+            "loadError": "فشل في تحميل بيانات الموظف."
         },
 
         "saveButton": "جاري الحفظ...",
@@ -501,6 +500,12 @@
             "saveButton": "جاري التحديث...",
             "createButton": "تحديث العميل"
         },
+        "add": {
+            "saveButton": "جارٍ إنشاء العميل...",
+            "createButton": "إنشاء عميل",
+            "createSuccess": "تم إنشاء العميل بنجاح.",
+            "createError": "حدث خطأ أثناء إنشاء العميل."
+        },
         "fields": {
             "name": { "label": "الاسم" },
             "phone": { "label": "الهاتف" },
@@ -518,6 +523,123 @@
             "unknownError": "حدث خطأ غير معروف"
         }
     },
+    "users": {
+        "users": "المستخدمين",
+        "users_list": "قائمة المستخدمين",
+        "add_user": "إضافة مستخدم",
+        "edit_user": "تعديل المستخدم",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "role": "الدور",
+        "createdAt": "تاريخ الإنشاء",
+        "actions": "الإجراءات",
+        "delete_user": "حذف المستخدم",
+        "delete_success": "تم حذف المستخدم بنجاح",
+        "delete_error": "فشل في حذف المستخدم",
+        "confirm_delete": "هل أنت متأكد أنك تريد حذف هذا المستخدم؟",
+        "cancel": "إلغاء",
+        "delete": "حذف",
+        "fetch_error": "فشل في تحميل المستخدمين",
+        "no_users_found": "لا يوجد مستخدمون",
+        "search": "بحث",
+        "status": "الحالة",
+        "phone": "رقم الهاتف",
+        "address": "العنوان",
+        "username": "اسم المستخدم",
+        "image": "الصورة",
+
+        "alerts": {
+            "generatingPdfTitle": "جاري إنشاء ملف PDF...",
+            "successTitle": "تم التصدير بنجاح",
+            "successText": "تم تصدير المستخدمين إلى PDF بنجاح.",
+            "errorTitle": "فشل في التصدير",
+            "unknownError": "حدث خطأ غير معروف"
+        },
+
+        "fields": {
+            "name": { "label": "الاسم" },
+            "username": { "label": "اسم المستخدم" },
+            "email": { "label": "البريد الإلكتروني" },
+            "phone": { "label": "رقم الهاتف" },
+            "address": { "label": "العنوان" },
+            "password": { "label": "كلمة المرور" },
+            "password_confirmation": { "label": "تأكيد كلمة المرور" },
+            "role": { "label": "الدور" }
+        },
+
+        "add": {
+            "addUser": "إضافة مستخدم",
+            "alerts": {
+                "roles_error": "فشل في تحميل الأدوار",
+                "create_success": "تم إنشاء المستخدم بنجاح",
+                "update_success": "تم تعديل المستخدم بنجاح",
+                "update_error": "حدث خطأ أثناء تعديل المستخدم",
+                "fetch_error": "فشل في تحميل بيانات المستخدم",
+                "field_errors": "يرجى تصحيح الحقول المطلوبة",
+                "create_error": "حدث خطأ أثناء إنشاء المستخدم"
+            },
+            "image_upload": {
+                "alt": "الصورة المرفوعة",
+                "placeholderAlt": "أيقونة الرفع",
+                "dropText": "قم بإسقاط الصورة هنا",
+                "browseButton": "تصفح الصور",
+                "note": "الحجم الأقصى 2 ميجابايت"
+            },
+            "createButton": "إنشاء مستخدم",
+            "updateButton": "تحديث المستخدم",
+            "saveButton": "جاري الحفظ..."
+        }
+    },
+    "roles": {
+        "roles": "الأدوار",
+        "roles_list": "قائمة الأدوار",
+        "users_list": "المستخدمين",
+        "add_role": "إضافة دور",
+        "edit_role": "تعديل الدور",
+        "delete_role": "حذف الدور",
+        "confirm_delete": "هل أنت متأكد أنك تريد حذف هذا الدور؟",
+        "delete": "حذف",
+        "cancel": "إلغاء",
+        "delete_success": "تم حذف الدور بنجاح",
+        "delete_error": "حدث خطأ أثناء حذف الدور",
+        "search": "بحث",
+        "actions": "الإجراءات",
+        "no_roles_found": "لا توجد أدوار",
+        "name": "الاسم",
+        "created_at": "تاريخ الإنشاء",
+        "add": {
+            "addRole": "إضافة دور",
+            "createButton": "إنشاء",
+            "saveButton": "جاري الإنشاء...",
+            "alerts": {
+                "create_success": "تم إنشاء الدور بنجاح",
+                "create_error": "حدث خطأ أثناء إنشاء الدور",
+                "field_errors": "يرجى التحقق من الحقول"
+            }
+        },
+        "alerts": {
+            "generatingPdfTitle": "جارٍ إنشاء ملف PDF...",
+            "successTitle": "تم التصدير بنجاح",
+            "successText": "تم تحميل ملف الأدوار بنجاح.",
+            "errorTitle": "فشل التصدير",
+            "unknownError": "حدث خطأ غير معروف."
+        },
+        "fields": {
+            "name": {
+                "label": "اسم الدور"
+            }
+        },
+        "edit": {
+            "editRole": "تعديل الدور",
+            "updateButton": "تحديث الدور",
+            "saveButton": "جاري التحديث...",
+            "alerts": {
+                "update_success": "تم التحديث بنجاح",
+                "update_error": "حدث خطأ أثناء التحديث",
+                "field_errors": "يرجى التحقق من الحقول"
+            }
+        }
+    },
     "auth": {
         "login": {
             "title": "تسجيل الدخول",
@@ -532,11 +654,14 @@
         "register": {
             "title": "إنشاء حساب",
             "name": "الاسم",
+            "username": "اسم المستخدم",
             "email": "البريد الإلكتروني",
             "password": "كلمة المرور",
             "confirm_password": "تأكيد كلمة المرور",
             "register_button": "إنشاء حساب",
-            "already_have_an_account": "هل لديك حساب بالفعل؟"
+            "already_have_an_account": "هل لديك حساب بالفعل؟",
+            "address": "العنوان",
+            "phone": "رقم الهاتف"
         },
         "reset_password": {
             "title": "إعادة تعيين كلمة المرور",

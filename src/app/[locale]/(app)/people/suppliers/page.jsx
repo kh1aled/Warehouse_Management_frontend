@@ -10,6 +10,7 @@ import DropdownLink, { DropdownButton } from "@/components/DropdownLink";
 import Loader from "@/components/Loader";
 import { deleteSupplierById, exportSuppliersPdf, getSuppliers } from "@/api/suppliers";
 import { createToast, createAlert, createConfirm } from "@/lib/sweetalert";
+import SkeletonRows from "@/components/SkeletonRows";
 
 const Page = ({ params }) => {
     const t = useTranslations("suppliers");
@@ -152,10 +153,13 @@ const Page = ({ params }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {loading ? (
+                            {loading ? 
+                            (
                                 <tr>
                                     <td colSpan={10} className="text-center py-4">
-                                        <Loader />
+                                        <div className="w-full p-8 relative">
+                                            <SkeletonRows />
+                                        </div>
                                     </td>
                                 </tr>
                             ) : filteredSuppliers.length === 0 ? (

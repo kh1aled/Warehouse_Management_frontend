@@ -12,6 +12,7 @@ import { useTranslations } from "next-intl";
 import { createToast, createAlert, createConfirm } from "@/lib/sweetalert";
 import AnimateImage from "@/components/AnimateImage";
 import Loader from "@/components/Loader";
+import SkeletonRows from "@/components/SkeletonRows";
 
 
 const Page = ({ params }) => {
@@ -202,9 +203,7 @@ const Page = ({ params }) => {
                             {loading ? (
                                 <tr>
                                     <td colSpan={14} className="text-center py-4">
-                                        <div className="w-full p-8 relative">
-                                            <Loader />
-                                        </div>
+                                        <SkeletonRows/>
                                     </td>
                                 </tr>
                             ) : categories.length === 0 ? (

@@ -9,6 +9,7 @@ import drag from "@/assets/drag.png";
 import { getCategoryById, updateCategoryById } from "@/api/categories";
 import { createToast, createAlert } from "@/lib/sweetalert";
 import { useTranslations } from "next-intl";
+import EditSkeleton from "@/components/EditSkeleton";
 
 const Page = ({ params }) => {
     const router = useRouter();
@@ -129,7 +130,7 @@ const Page = ({ params }) => {
     return (
         <section className="custom-section">
             <Breadcrumb
-                title={t("product_edit.EditProduct")}
+                title={t("categories.editCategory")}
                 listItems={[t("product_edit.title"), t("categories.breadcrumb"), t("categories.editCategory")]}
             />
 
@@ -137,9 +138,7 @@ const Page = ({ params }) => {
 
                 {
                     loading ? (
-                        <div className="w-full p-8 relative">
-                            <Loader />
-                        </div>
+                        <EditSkeleton/>
                     ) : (
                         <>
                             <form

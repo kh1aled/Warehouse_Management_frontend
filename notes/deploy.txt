@@ -1,0 +1,67 @@
+تمام يا خالد، دام إنك عامل Inventory Management System باستخدام:
+
+✅ Frontend: Next.js
+
+✅ Backend API: Laravel
+
+✅ Database: MySQL
+
+وعاوز تعمله Demo عام توريه في البورتفوليو، فدي أفضل خطة مجانية وفعالة أقدر أرشحها ليك:
+
+✅ خطة نشر مشروع Laravel + Next.js + MySQL مجانًا (Demo Ready)
+1. 🔧 استضافة Laravel API (Backend)
+🎯 الخيار الأفضل: Render.com
+
+✅ يدعم PHP & Laravel بسهولة.
+
+✅ تقدر توصل بالـ GitHub وعمل Deploy تلقائي.
+
+❗ لازم تخلي .env في Laravel مضبوط (هقولك إزاي).
+
+❗ Laravel API هيبقى شغال على رابط زي:
+
+arduino
+نسخ
+تحرير
+https://your-api.onrender.com/api/products
+2. 🛢️ استضافة قاعدة بيانات MySQL مجانًا
+🎯 الخيار الأفضل: PlanetScale ✅ مجاني وMySQL-compatible.
+
+✅ شبه MySQL تمامًا ويدعم Laravel بدون مشاكل.
+
+✅ بيديك credentials (host, user, password...) بسهولة.
+
+❗ تقدر تستخدمه مباشرة في .env بتاع Laravel.
+
+3. 🌐 نشر Next.js (Frontend)
+🎯 الخيار الأفضل: Vercel (هو المطور الرسمي لـ Next.js)
+
+✅ سهل جدًا للنشر.
+
+✅ يدعم بيئة SSR وAPI Routes.
+
+✅ يعمل Auto Deploy من GitHub.
+
+❗ فقط اربط الـ API Base URL الخاص بـ Laravel (من Render) في المتغيرات البيئية (NEXT_PUBLIC_API_URL مثلًا).
+
+⚙️ ترتيب خطوات الربط والنشر
+المرحلة	الخطوة	الأداة
+1	اربط Laravel بـ PlanetScale	Laravel .env
+2	اعمل GitHub Repo للـ Backend	GitHub
+3	أنشئ Web Service على Render وسحب الكود من GitHub	Render
+4	جهز .env على Render بمتغيرات MySQL وAPP_URL	Render
+5	Laravel هيبقى شغال على رابط عام	✅
+6	انقل رابط الـ Laravel API إلى Next.js	متغير NEXT_PUBLIC_API_URL
+7	انشر Next.js على Vercel	Vercel
+8	مشروعك هيشتغل على رابط مثل: https://inventory-app.vercel.app	✅
+
+🧪 مثال: شكل البنية النهائية
+🔗 Frontend (Next.js):
+https://inventory-frontend.vercel.app
+
+🔗 Backend API (Laravel):
+https://inventory-api.onrender.com/api
+
+🔗 Database (MySQL):
+مستضافة على PlanetScale
+

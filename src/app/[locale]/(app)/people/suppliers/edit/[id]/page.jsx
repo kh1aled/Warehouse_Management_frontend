@@ -3,9 +3,9 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupplierById, updateSupplierById } from "@/api/suppliers";
-import Loader from "@/components/Loader";
 import { createToast, createAlert } from "@/lib/sweetalert";
 import { useTranslations } from "next-intl";
+import EditCustomerSkeleton from "@/components/EditCustomerSkeleton";
 
 const Page = ({ params }) => {
     const { id, locale } = params;
@@ -103,7 +103,7 @@ const Page = ({ params }) => {
             <div className="main_section">
                 {loading ? (
                     <div className="w-full p-8 relative">
-                        <Loader />
+                        <EditCustomerSkeleton/>
                     </div>
                 ) : (
                     <>

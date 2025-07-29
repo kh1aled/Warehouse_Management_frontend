@@ -2,8 +2,8 @@ export async function generateMetadata({ params }) {
     const { locale } = params
 
     const titles = {
-        en: 'Users Mangement',
-        ar: 'ادارة المستخدمين',
+        en: 'Roles Mangement',
+        ar: 'ادارة الادوار',
     }
 
     return {

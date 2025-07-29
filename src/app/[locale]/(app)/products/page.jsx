@@ -10,7 +10,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Dropdown from "@/components/Dropdown";
 import DropdownLink, { DropdownButton } from "@/components/DropdownLink";
 import AnimateImage from "@/components/AnimateImage";
-import Loader from "@/components/Loader";
+import SkeletonRows from "@/components/SkeletonRows";
 import Pagination from "@/components/Pagination";
 
 // API
@@ -24,6 +24,7 @@ const Page = ({ params }) => {
     const [fetchError, setFetchError] = useState(null);
     const [pagination, setPagination] = useState({});
     const [searchQuery, setSearchQuery] = useState("");
+    const [debouncedQuery, setDebouncedQuery] = useState("");
 
     const path = usePathname();
     const { locale } = params;
@@ -31,6 +32,13 @@ const Page = ({ params }) => {
     const Toast = createToast();
     const Alert = createAlert();
     const Confirm = createConfirm();
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedQuery(searchQuery);
+        }, 500);
+        return () => clearTimeout(handler);
+    }, [searchQuery]);
 
     const fetchProducts = useCallback(({ page = 1, query = "" }) => {
         setLoading(true);
@@ -53,9 +61,11 @@ const Page = ({ params }) => {
             .finally(() => setLoading(false));
     }, [t]);
 
+
     useEffect(() => {
-        fetchProducts({ page: 1 });
-    }, [fetchProducts]);
+        fetchProducts({ page: 1, query: debouncedQuery });
+    }, [debouncedQuery]);
+
 
     const handleDelete = async (id) => {
         const result = await Confirm.fire({
@@ -80,7 +90,7 @@ const Page = ({ params }) => {
     const handleSearch = (e) => {
         const value = e.target.value.trim();
         setSearchQuery(value);
-        fetchProducts({ page: 1, query: value });
+        // fetchProducts({ page: 1, query: value });
     };
 
     const handlePageChange = (page) => {
@@ -133,7 +143,7 @@ const Page = ({ params }) => {
                     </Link>
                 </div>
 
-                <div className="w-full mt-4 flex items-center justify-between">
+                <div className="tools_container">
                     <input
                         type="search"
                         onChange={handleSearch}
@@ -141,7 +151,7 @@ const Page = ({ params }) => {
                         className="search-input border-border"
                     />
 
-                    <div className="flex-center gap-3">
+                    <div className="flex-center gap-3 self-end">
                         <button onClick={handleExportPdf} className="flex-center border border-[var(--orange-color)] w-10 h-10 cursor-pointer hover:bg-[var(--orange-color)] group">
                             <i className="fa-solid fa-file-pdf text-[var(--orange-color)] group-hover:text-white text-2xl"></i>
                         </button>
@@ -178,9 +188,7 @@ const Page = ({ params }) => {
                             {loading ? (
                                 <tr>
                                     <td colSpan={14} className="text-center py-4">
-                                        <div className="w-full p-8 relative">
-                                            <Loader />
-                                        </div>
+                                        <SkeletonRows/>
                                     </td>
                                 </tr>
                             ) : products.length === 0 ? (
@@ -192,7 +200,7 @@ const Page = ({ params }) => {
                                 </tr>
                             ) : (
                                 products.map((product, index) => (
-                                    <tr key={`${product.id}-${index}`}>
+                                    <tr key={`${product.id}-${index}`} className={`transition-colors duration-200 ${product.count <= product.minimum_quantity ? "bg-red-500 dark:bg-red-700 animate-pulse" : "bg-transparent"}`}> 
                                         <td>{product.id}</td>
                                         <td className="w-12 h-12">
                                             <AnimateImage

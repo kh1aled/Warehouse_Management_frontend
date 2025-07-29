@@ -1,2 +1,1 @@
-stop in employee add 
 study php files and laravel files and file system

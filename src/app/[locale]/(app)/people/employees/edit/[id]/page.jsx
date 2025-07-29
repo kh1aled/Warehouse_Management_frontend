@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
-import Loader from "@/components/Loader";
+import EditSkeleton from "@/components/EditSkeleton";
 import drag from "@/assets/drag.png";
 import { getEmployeeById, updateEmployeeById } from "@/api/employees";
 import { createToast, createAlert } from "@/lib/sweetalert";
@@ -162,7 +162,7 @@ const Page = ({ params }) => {
             <div className="main_section">
                 {loading ? (
                     <div className="w-full py-12 relative">
-                        <Loader />
+                        <EditSkeleton />
                     </div>
                 ) : (
                     <>

@@ -10,15 +10,9 @@ const Home = () => {
         <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 p-6">
             <div className="max-w-3xl w-full bg-white dark:bg-gray-900 shadow-xl rounded-3xl p-10 text-center space-y-8 transition-all duration-300">
 
-                {/* أيقونة جميلة */}
                 <div className="flex  w-24 h-24 mx-auto mb-6 bg-blue-100 dark:bg-gray-800 rounded-full shadow-lg items-center justify-center">
                     <Image src={'/warehouse.png'} alt='warhouse logo' width={100} height={100} />
                 </div>
-
-                {/* العنوان */}
-                {/* <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 dark:text-white tracking-tight">
-                    {t('title')}
-                </h1> */}
 
                 {/* Welcome */}
                 <p className="text-xl md:text-2xl font-medium text-gray-800 dark:text-white">

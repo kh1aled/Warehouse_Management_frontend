@@ -11,27 +11,31 @@ export default function Pagination({ pagination, onPageChange, lang }) {
 
     const { links, from, to, total } = pagination;
 
+    const prevLink = links.find((l) => l.label.toLowerCase().includes("previous"));
+    const nextLink = links.find((l) => l.label.toLowerCase().includes("next"));
+
     return (
         <div className="flex items-center justify-between px-4 py-3 sm:px-6 dark:bg-[#303030]">
-            {/* للموبايل */}
+            {/* 📱 Mobile View */}
             <div className="flex flex-1 justify-between sm:hidden">
                 <button
-                    disabled={!pagination.prev_page_url}
+                    disabled={!prevLink?.url}
                     onClick={() =>
                         onPageChange &&
-                        pagination.prev_page_url &&
-                        onPageChange(getPageNumber(pagination.prev_page_url))
+                        prevLink?.url &&
+                        onPageChange(getPageNumber(prevLink.url))
                     }
                     className="relative inline-flex items-center rounded-md border border-gray-300 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50"
                 >
                     {t("previous")}
                 </button>
+
                 <button
-                    disabled={!pagination.next_page_url}
+                    disabled={!nextLink?.url}
                     onClick={() =>
                         onPageChange &&
-                        pagination.next_page_url &&
-                        onPageChange(getPageNumber(pagination.next_page_url))
+                        nextLink?.url &&
+                        onPageChange(getPageNumber(nextLink.url))
                     }
                     className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 disabled:opacity-50"
                 >
@@ -39,13 +43,14 @@ export default function Pagination({ pagination, onPageChange, lang }) {
                 </button>
             </div>
 
-            {/* للديسكتوب */}
+            {/* 💻 Desktop View */}
             <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                 <div>
                     <p className="text-sm text-gray-700 dark:text-gray-300">
-                        <span>{t("Showing")}</span> { from } <span>{t("to")}</span>  <span>{ to }</span>  <span>{t('of')}</span> { total } <span>{t('results')}</span>
+                        <span>{t("Showing")}</span> {from} <span>{t("to")}</span> {to} <span>{t("of")}</span> {total} <span>{t("results")}</span>
                     </p>
                 </div>
+
                 <div>
                     <nav
                         aria-label="Pagination"
@@ -55,10 +60,8 @@ export default function Pagination({ pagination, onPageChange, lang }) {
                             const isDisabled = !link.url;
                             const isActive = link.active;
                             const label = link.label;
-
-                            const isPrev = label.includes("Previous");
-                            const isNext = label.includes("Next");
-
+                            const isPrev = label.toLowerCase().includes("previous");
+                            const isNext = label.toLowerCase().includes("next");
                             const page = getPageNumber(link.url);
 
                             return (
@@ -67,22 +70,24 @@ export default function Pagination({ pagination, onPageChange, lang }) {
                                     disabled={isDisabled}
                                     onClick={() => !isDisabled && onPageChange && onPageChange(page)}
                                     className={`relative inline-flex items-center px-2 py-2 text-sm font-semibold ring-1 ring-inset
-    ${isPrev
-                                            ? lang === "ar"
-                                                ? "rounded-r-md"
-                                                : "rounded-l-md"
-                                            : isNext
+                                        ${
+                                            isPrev
+                                                ? lang === "ar"
+                                                    ? "rounded-r-md"
+                                                    : "rounded-l-md"
+                                                : isNext
                                                 ? lang === "ar"
                                                     ? "rounded-l-md"
                                                     : "rounded-r-md"
                                                 : ""
                                         }
-    ${isActive
-                                            ? "z-10 bg-main-color text-white"
-                                            : "text-gray-900 dark:text-gray-200 ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600"
+                                        ${
+                                            isActive
+                                                ? "z-10 bg-main-color text-white"
+                                                : "text-gray-900 dark:text-gray-200 ring-gray-300 dark:ring-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600"
                                         }
-    ${isDisabled ? "opacity-50 cursor-not-allowed" : ""}
-  `}
+                                        ${isDisabled ? "opacity-50 cursor-not-allowed" : ""}
+                                    `}
                                 >
                                     {isPrev ? (
                                         <>
@@ -101,7 +106,7 @@ export default function Pagination({ pagination, onPageChange, lang }) {
                                             />
                                         </>
                                     ) : (
-                                        <span dangerouslySetInnerHTML={{ __html: link.label }} />
+                                        <span dangerouslySetInnerHTML={{ __html: label }} />
                                     )}
                                 </button>
                             );
@@ -113,7 +118,7 @@ export default function Pagination({ pagination, onPageChange, lang }) {
     );
 }
 
-// Helper to extract ?page= number
+// 📌 Extracts ?page= from URL
 function getPageNumber(url) {
     if (!url) return null;
     try {

@@ -2,7 +2,7 @@ import CrudService from "@/utils/crudFactory";
 
 const productService = new CrudService('products');
 export const getProducts = productService.getAll;
-export const getProductsWithPagination = productService.getProductsWithPagination;
+export const getProductsWithPagination = productService.getAllWithPagination;
 export const createProduct = productService.create;
 export const getProductById = productService.getById;
 export const updateProductById = productService.update;

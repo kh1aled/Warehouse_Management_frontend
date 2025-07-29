@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
-import Loader from "@/components/Loader";
+import EditSkeleton from "@/components/EditSkeleton";
 import { getProductById, updateProductById } from "@/api/products";
 import { getCategories } from "@/api/categories";
 import drag from "@/assets/drag.png";
@@ -166,7 +166,7 @@ const Page = ({ params }) => {
                 {
                     loading ?
                         (<div className="w-full p-8 relative">
-                            <Loader />
+                            <EditSkeleton/>
                         </div>
                         )
                         :

@@ -1,17 +1,12 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
 import Dropdown from '@/components/Dropdown'
 import Link from 'next/link'
-import NavLink from '@/components/NavLink'
-import ResponsiveNavLink, {
-    ResponsiveNavButton,
-} from '@/components/ResponsiveNavLink'
 import DropdownLink, { DropdownButton } from '@/components/DropdownLink'
 import { useAuth } from '@/hooks/auth'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import logo from '@/assets/header-profile.svg'
-import Image from 'next/image'
 import Sidebar from '@/components/Sidebar'
+import AnimateImage from '@/components/AnimateImage'
+
 import ThemeSwitcher from '@/components/ThemeSwitcher'
 
 const Navigation = ({ user, lang, dir }) => {
@@ -27,6 +22,8 @@ const Navigation = ({ user, lang, dir }) => {
     }
 
     const pathSegments = pathname.split("/").slice(2).join("/");//get pathname without lang
+
+
 
 
     return (
@@ -147,11 +144,19 @@ const Navigation = ({ user, lang, dir }) => {
                             trigger={
                                 <button className="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition duration-150 ease-in-out">
                                     <div className="flex-center gap-5">
-                                        <span>
-                                            <Image
-                                                src={logo}
-                                                alt="Profile Logo"
-                                                className="w-12 h-12 rounded-full"
+                                        <span className='w-12 h-12'>
+
+                                            <img
+                                                src={user?.avatar}
+                                                alt={user.name}
+                                                className="object-cover w-full h-full rounded-full inset-0"
+                                                onError={(e) => {
+                                                    e.target.style.display = "none";
+                                                    e.target.parentElement.classList.add("animate-pulse");
+                                                    const span = document.createElement("span");
+                                                    span.className = "text-white text-[10px]";
+                                                    e.target.parentElement.appendChild(span);
+                                                }}
                                             />
                                         </span>
 
